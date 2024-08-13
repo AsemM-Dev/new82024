@@ -1,0 +1,118 @@
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link.show {
+  color: #fda521 !important;
+  font-weight: 600;
+}
+
+.bg-light {
+  /* background-color: #022b42 !important; */
+  /* background-color: #0a7273 !important; */
+  background-color: #032030 !important;
+}
+
+.navbar-nav {
+  letter-spacing: 0.3em;
+  gap: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-nav>li:hover>a {
+  color: #fda521 !important;
+  border-bottom: 0.1em #f0f3fa solid;
+}
+
+.nav-link {
+  color: #e9e3d5 !important;
+  font-weight: 600;
+}
+
+.navbar-toggler.x {
+  border: none;
+  outline: none;
+}
+
+.navbar-toggler.x:focus {
+  outline: none;
+  border: none;
+}
+
+.navbar-toggler.x[aria-expanded=true] .icon-bar:nth-of-type(1) {
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transform-origin: 10% 10%;
+  -ms-transform-origin: 10% 10%;
+  transform-origin: 10% 10%;
+}
+
+.navbar-toggler.x[aria-expanded=true] .icon-bar:nth-of-type(2) {
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+.navbar-toggler.x[aria-expanded=true] .icon-bar:nth-of-type(3) {
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-transform-origin: 10% 90%;
+  -ms-transform-origin: 10% 90%;
+  transform-origin: 10% 90%;
+}
+
+.navbar-toggler.x .icon-bar {
+  width: 22px;
+  display: block;
+  height: 2px;
+  background-color: #8aaee0;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.navbar-toggler.x .icon-bar+.icon-bar {
+  margin-top: 4px;
+}
+
+.navbar-toggler.x .icon-bar:nth-of-type(1) {
+  -webkit-transform: rotate(0);
+  -ms-transform: rotate(0);
+  transform: rotate(0);
+}
+
+.navbar-toggler.x .icon-bar:nth-of-type(2) {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+
+.navbar-toggler.x .icon-bar:nth-of-type(3) {
+  -webkit-transform: rotate(0);
+  -ms-transform: rotate(0);
+  transform: rotate(0);
+}
+
+#login {
+  border-bottom: none;
+}
+
+.button {
+  background-color: #fda521;
+  color: #033043;
+  width: 8.5em;
+  height: 2.9em;
+  letter-spacing: 0.3em;
+  font-weight: 600;
+  border: #033043 0.1em solid;
+  border-radius: 11px;
+  transition: all 0.6s ease;
+  text-align: center;
+  text-decoration: none;
+  display: grid;
+  align-items: center;
+}
+
+.button:hover {
+  background-color: #e9e3d5;
+  color: #033043;
+  cursor: pointer;
+}
