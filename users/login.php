@@ -1,3 +1,45 @@
+
+<?php
+require '../config.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $email = trim($_POST['email']);
+  $password = $_POST['password'];
+
+  // Prepare statement
+  $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
+  if (!$stmt) {
+      die("Database error: " . $conn->error);
+  }
+
+  $stmt->bind_param("s", $email);
+  $stmt->execute();
+  $result = $stmt->get_result();
+
+  if ($result->num_rows === 1) {
+      $user = $result->fetch_assoc();
+
+      // Verify password
+      if (password_verify($password, $user['password'])) {
+          if ($user['is_verified']) {
+              session_start();
+              $_SESSION['user'] = $user;
+              header("Location: ../indexnew.php");
+                exit; // Ensure the script stops executing after redirection
+          } else {
+              echo "Please verify your email before logging in.";
+          }
+      } else {
+          echo "Invalid password.";
+      }
+  } else {
+      echo "Invalid email or user does not exist.";
+  }
+
+  $stmt->close();
+}
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -61,18 +103,18 @@
         <div class="container-fluid main-container">
             <div class="container-login">
                 <div class="form">
-                    <a href="../indexnew.html"><img src="../assets/img/icons8-back-50.png" alt="" width="24" height="24"></a>
+                    <a href="../indexnew.php"><img src="../assets/img/icons8-back-50.png" alt="" width="24" height="24"></a>
                     <h3 class="title">Login</h3>
-                    <form>
+                    <form method="POST" action="login.php">
                         <div class="form-group">
-                            <input type="text" name="email" id="email" autocomplete="off" required /><label>Username</label>
+                            <input type="text" name="email" id="email" autocomplete="off" required /><label>Email</label>
                         </div>
                         <div class="form-group">
                             <input type="password" name="password" id="password" autocomplete="off" required /><label>Password</label>
                         </div>
-                        <button type="button" class="submit">Sign In</button>
+                        <button type="submit" class="submit">Sign In</button>
                         <div class="row d-flex justify-content-center text-center">
-                            <p>Not Yet Registered? <a href="./signup.html">Sign Up</a></p>
+                            <p>Not Yet Registered? <a href="./signup.php">Sign Up</a></p>
                         </div>
                     </form>
                 </div>
