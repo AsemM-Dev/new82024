@@ -261,7 +261,7 @@
                 opacity: 0,
                 ease: 'power4.inOut',
                 onComplete: function () {
-                window.location.href = './indexnew.html';
+                window.location.href = './indexnew.php';
             }
             }, "-=0.6")
 
